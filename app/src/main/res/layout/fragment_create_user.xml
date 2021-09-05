@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.gogaedd.edgargonzalezjustochallenge.viewmodel.MainViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.CreateUserFragment">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select nationality:" />
+
+        <RadioGroup
+            android:id="@+id/rgNatFgmntcu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbAuFgmntcu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Australian" />
+
+            <RadioButton
+                android:id="@+id/rbBrFgmntcu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Brazilian" />
+
+            <RadioButton
+                android:id="@+id/rbChFgmntcu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chinese" />
+
+            <RadioButton
+                android:id="@+id/rbEsFgmntcu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Spanish" />
+
+
+            <RadioButton
+                android:id="@+id/rbIrFgmntcu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Irish" />
+            <RadioButton
+                android:id="@+id/rbFrFgmntcu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="French" />
+
+            <RadioButton
+                android:id="@+id/rbUsFgmntcu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Us" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select gender: " />
+
+        <RadioGroup
+            android:id="@+id/rgGenderFgmntcu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbMaleFgmntcu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/rbFemaleFgmntcu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnCreateFgmntcu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="Create user" />
+
+    </LinearLayout>
+</layout>

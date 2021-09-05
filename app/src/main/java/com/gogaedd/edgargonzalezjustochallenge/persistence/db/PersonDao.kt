@@ -1,9 +1,6 @@
 package com.gogaedd.edgargonzalezjustochallenge.persistence.db
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.gogaedd.edgargonzalezjustochallenge.model.Person
 
 
@@ -11,15 +8,21 @@ import com.gogaedd.edgargonzalezjustochallenge.model.Person
 interface PersonDao {
 
 
+    @Insert
+    fun insertAll(vararg  people: Person)
+
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE )
+    fun insert(person: Person)
+
+    @Query("Select * From Person where email = :email")
+    fun getUserByEmail(email:String): Person
+
     @Query("Select * From Person")
     fun getAll() : MutableList<Person >
 
-
-    @Insert
-    fun insertAll(vararg  pokemons: Person)
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE )
-    fun insert(pokemons: Person)
+    @Delete
+    fun deleteUser(person:Person)
 
 
 

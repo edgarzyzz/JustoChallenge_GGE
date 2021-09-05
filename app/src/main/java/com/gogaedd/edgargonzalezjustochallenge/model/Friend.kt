@@ -1,18 +1,18 @@
 package com.gogaedd.edgargonzalezjustochallenge.model
 
 import androidx.room.Entity
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.gogaedd.edgargonzalezjustochallenge.persistence.db.converters_db.BirthdayConverter
 import com.gogaedd.edgargonzalezjustochallenge.persistence.db.converters_db.LocationConverter
 import com.gogaedd.edgargonzalezjustochallenge.persistence.db.converters_db.NameConverter
 
-
 @Entity
-data class Person(
+data class Friend (
     @PrimaryKey
     val email: String = "",
+
+    val emailMainUserFriend:String="",
 
     val gender: String = "",
 
@@ -29,7 +29,7 @@ data class Person(
 
     @TypeConverters(BirthdayConverter::class)
     val dob: Birthday = Birthday(),
-//    val registered: String =String(),
+    //    val registered: String =String(),
     val phone: String = "",
     val cell: String = "",
 //    val id: String =String(),
@@ -39,6 +39,4 @@ data class Person(
     val nat: String = "",
 
     var seed: String = ""
-
-
 )
