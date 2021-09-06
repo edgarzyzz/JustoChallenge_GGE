@@ -1,14 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragment.PersonDetailFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gogaedd.edgargonzalezjustochallenge.viewmodel.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.fragment.PeopleFragment">
 
-</FrameLayout>
+        <View
+            android:id="@+id/imgvBckFgmntp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/purple_200"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgvPhotoFgmntdp"
+            drawImageByUrl="@{viewModel.lvdCurrentUser.picture.medium}"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="@id/imgvBckFgmntp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgvBckFgmntp" />
+
+        <TextView
+            android:id="@+id/tvNameFgmntdp"
+            fullName="@{viewModel.lvdCurrentUser.name}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgvPhotoFgmntdp" />
+
+        <TextView
+            android:id="@+id/tvEmailFgmntdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.lvdCurrentUser.email}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameFgmntdp" />
+
+        <TextView
+            android:id="@+id/tvGenderFgmntdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.lvdCurrentUser.gender}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmailFgmntdp" />
+
+        <TextView
+            android:id="@+id/tvNationalityFgmntdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.lvdCurrentUser.nat}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvGenderFgmntdp" />
+
+        <TextView
+            android:id="@+id/tvAgeFgmntdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.lvdCurrentUser.dob.toString()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNationalityFgmntdp" />
+
+        <TextView
+            android:id="@+id/tvPhoneFgmntdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.lvdCurrentUser.phone}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAgeFgmntdp" />
+
+        <TextView
+            android:id="@+id/tvAddressFgmntdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.lvdCurrentUser.location.toString()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPhoneFgmntdp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
