@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.gogaedd.edgargonzalezjustochallenge.viewmodel.MainViewModel" />
+            name="person"
+            type="com.gogaedd.edgargonzalezjustochallenge.model.Person" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +25,7 @@
 
         <ImageView
             android:id="@+id/imgvPhotoFgmntdp"
-            drawImageByUrl="@{viewModel.lvdCurrentUser.picture.medium}"
+            drawImageByUrl="@{person.picture.medium}"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="@id/imgvBckFgmntp"
@@ -35,7 +35,7 @@
 
         <TextView
             android:id="@+id/tvNameFgmntdp"
-            fullName="@{viewModel.lvdCurrentUser.name}"
+            fullName="@{person.name}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +46,7 @@
             android:id="@+id/tvEmailFgmntdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.lvdCurrentUser.email}"
+            android:text="@{person.email}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvNameFgmntdp" />
@@ -55,7 +55,7 @@
             android:id="@+id/tvGenderFgmntdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.lvdCurrentUser.gender}"
+            android:text="@{person.gender}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvEmailFgmntdp" />
@@ -64,7 +64,7 @@
             android:id="@+id/tvNationalityFgmntdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.lvdCurrentUser.nat}"
+            android:text="@{person.nat}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvGenderFgmntdp" />
@@ -73,7 +73,7 @@
             android:id="@+id/tvAgeFgmntdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.lvdCurrentUser.dob.toString()}"
+            android:text="@{person.dob.toString()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvNationalityFgmntdp" />
@@ -82,7 +82,7 @@
             android:id="@+id/tvPhoneFgmntdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.lvdCurrentUser.phone}"
+            android:text="@{person.phone}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAgeFgmntdp" />
@@ -91,7 +91,7 @@
             android:id="@+id/tvAddressFgmntdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.lvdCurrentUser.location.toString()}"
+            android:text="@{person.location.toString()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvPhoneFgmntdp" />

@@ -30,9 +30,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             dataFriend="@{viewmodel.lvdFriends}"
+            android:layout_marginBottom="10dp"
             app:layout_constraintTop_toBottomOf="@id/tvFriendsFgmntp"
             app:layout_constraintBottom_toTopOf="@id/tvFieldNearPeopleFgmntp"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toTopOf="@id/tvFieldNearPeopleFgmntp"/>
         <TextView
             android:id="@+id/tvFieldNearPeopleFgmntp"
             style="@style/TextAppearance.AppCompat.Title"

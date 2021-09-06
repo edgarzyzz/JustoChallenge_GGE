@@ -6,22 +6,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.gogaedd.edgargonzalezjustochallenge.R
 import com.gogaedd.edgargonzalezjustochallenge.databinding.FragmentPeopleBinding
 import com.gogaedd.edgargonzalezjustochallenge.databinding.FragmentPersonDetailBinding
+import com.gogaedd.edgargonzalezjustochallenge.model.Friend
+import com.gogaedd.edgargonzalezjustochallenge.model.Person
 import com.gogaedd.edgargonzalezjustochallenge.viewmodel.MainViewModel
+import com.google.gson.Gson
 
 
 class PersonDetailFragment : Fragment() {
-    lateinit var viewmodel: MainViewModel
+    private val args : PersonDetailFragmentArgs by navArgs()
+    lateinit var binding: FragmentPersonDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentPersonDetailBinding.inflate(inflater,container,false)
-        viewmodel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-        binding.viewModel = viewmodel
+        binding = FragmentPersonDetailBinding.inflate(inflater,container,false)
+
         binding.lifecycleOwner = this
 
 
@@ -32,7 +36,9 @@ class PersonDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        val json = args.personToShow
+        val person = Gson().fromJson(json, Person::class.java)
+        binding.person =person
 
 
 

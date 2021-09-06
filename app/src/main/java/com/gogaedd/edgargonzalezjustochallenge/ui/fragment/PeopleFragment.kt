@@ -16,6 +16,7 @@ import com.gogaedd.edgargonzalezjustochallenge.listener.NearPersonListener
 import com.gogaedd.edgargonzalezjustochallenge.model.Friend
 import com.gogaedd.edgargonzalezjustochallenge.model.Person
 import com.gogaedd.edgargonzalezjustochallenge.viewmodel.MainViewModel
+import com.google.gson.Gson
 
 class PeopleFragment : Fragment(), NearPersonListener,FriendListener {
 
@@ -63,7 +64,7 @@ class PeopleFragment : Fragment(), NearPersonListener,FriendListener {
     }
 
     override fun onShowDetailNearPerson(nearPerson: Person) {
-        val action = PeopleFragmentDirections.actionPeopleFragmentToPersonDetailFragment()
+        val action = PeopleFragmentDirections.actionPeopleFragmentToPersonDetailFragment(Gson().toJson(nearPerson))
         findNavController().navigate(action)
     }
 
@@ -76,7 +77,9 @@ class PeopleFragment : Fragment(), NearPersonListener,FriendListener {
     }
 
     override fun onShowDetailFriend(friend: Friend) {
-        val action = PeopleFragmentDirections.actionPeopleFragmentToPersonDetailFragment()
+        val person = Person(friend)
+        val json = Gson().toJson(person)
+        val action = PeopleFragmentDirections.actionPeopleFragmentToPersonDetailFragment(json)
         findNavController().navigate(action)
     }
 

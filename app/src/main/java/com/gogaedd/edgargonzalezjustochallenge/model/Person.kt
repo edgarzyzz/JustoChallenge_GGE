@@ -41,4 +41,18 @@ data class Person(
     var seed: String = ""
 
 
-)
+) {
+    constructor(friend: Friend) : this(
+        friend.email,
+        friend.gender,
+        friend.name,
+        friend.location,
+        friend.dob,
+        friend.phone,
+        friend.cell,
+        friend.picture,
+        friend.nat,
+        friend.seed
+
+    )
+}

@@ -40,6 +40,8 @@ class FriendAdapter() : RecyclerView.Adapter<FriendAdapter.FriendViewHolder>() {
         fun bind(friend: Friend) {
             binding.friend = friend
             binding.ibtnDeleteItmf.setOnClickListener { mListener?.onDeleteFriend(friend) }
+            binding.root.setOnClickListener { mListener?.onShowDetailFriend(friend) }
+
         }
     }
 }
