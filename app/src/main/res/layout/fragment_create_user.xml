@@ -24,7 +24,9 @@
         <RadioGroup
             android:id="@+id/rgNatFgmntcu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp">
+
 
             <RadioButton
                 android:id="@+id/rbAuFgmntcu"
@@ -72,12 +74,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select gender: " />
+            android:text="Select gender: "
+            />
 
         <RadioGroup
             android:id="@+id/rgGenderFgmntcu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp">
 
             <RadioButton
                 android:id="@+id/rbMaleFgmntcu"

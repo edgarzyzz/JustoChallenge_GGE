@@ -2,6 +2,7 @@ package com.gogaedd.edgargonzalezjustochallenge.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import com.gogaedd.edgargonzalezjustochallenge.model.Friend
 import com.gogaedd.edgargonzalezjustochallenge.repository.MainRepository
 import com.gogaedd.edgargonzalezjustochallenge.model.Person
 
@@ -62,6 +63,22 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun deleteUser(person: Person){
         repository.deleteUser(person)
+    }
+
+    fun storeFriend(nearPerson: Person) {
+        repository.createFriend(nearPerson)
+    }
+
+    fun loadFriends() {
+        repository.loadFriendsCurrentUser()
+    }
+
+    fun selectCurrentUser(user: Person) {
+        repository.selectCurrentUser(user)
+    }
+
+    fun deleteFriend(friendToDelete: Friend) {
+        repository.deleteFriend(friendToDelete)
     }
 
 

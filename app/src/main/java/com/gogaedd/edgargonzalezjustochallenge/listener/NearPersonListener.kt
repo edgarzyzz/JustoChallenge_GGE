@@ -1,6 +1,7 @@
 package com.gogaedd.edgargonzalezjustochallenge.listener
 
-import android.app.Person
+import com.gogaedd.edgargonzalezjustochallenge.model.Person
+
 
 interface NearPersonListener {
 

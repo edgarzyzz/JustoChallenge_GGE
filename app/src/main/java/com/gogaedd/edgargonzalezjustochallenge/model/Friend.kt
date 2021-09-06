@@ -39,4 +39,21 @@ data class Friend (
     val nat: String = "",
 
     var seed: String = ""
-)
+) {
+    constructor(person: Person, emailCurrentUser:String) : this(
+        person.email,
+        emailCurrentUser,
+        person.gender,
+        person.name ,
+        person.location ,
+        person.dob ,
+        person.phone ,
+        person.cell ,
+        person.picture ,
+        person.nat ,
+        person.seed
+
+
+
+    )
+}

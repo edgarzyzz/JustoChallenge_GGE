@@ -57,6 +57,7 @@ class LoginFragment : Fragment(),UserRegsitreredListener {
 
 
     override fun onUserSelected(user: Person) {
+        viewModel.selectCurrentUser(user)
         val action = LoginFragmentDirections.actionLoginFragmentToPeopleFragment()
         findNavController().navigate(action)
     }

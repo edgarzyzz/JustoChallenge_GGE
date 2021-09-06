@@ -28,7 +28,7 @@ class NetPerson() : NetHelper() {
                         if (!it.listPeople.isNullOrEmpty()) {
                             it.listPeople[0]?.let { person ->
                                 it.infoRequest.seed
-                                mListener?.onResultOk(person, ConstantsApp.NetPerson.GET_NEW_USER)
+                                mListener?.onResultOk(person, ConstantsApp.Net.GET_NEW_USER)
 
                             }
 
@@ -39,14 +39,14 @@ class NetPerson() : NetHelper() {
 
                 }
 
-                mListener?.onResultError("empty Data", ConstantsApp.NetPerson.GET_NEW_USER)
+                mListener?.onResultError("empty Data", ConstantsApp.Net.GET_NEW_USER)
             }
 
             override fun onFailure(call: Call<RequestPerson>, t: Throwable) {
                 mListener?.onResultError(
                     t.message?.let {
                         it
-                    } ?: run { "Error web service" }, ConstantsApp.NetPerson.GET_NEW_USER
+                    } ?: run { "Error web service" }, ConstantsApp.Net.GET_NEW_USER
                 )
             }
         })
@@ -66,7 +66,7 @@ class NetPerson() : NetHelper() {
                         if (!responsePerson.listPeople.isNullOrEmpty()) {
                             mListener?.onResultOk(
                                 responsePerson.listPeople,
-                                ConstantsApp.NetPerson.GET_RANDOM_PEOPLE
+                                ConstantsApp.Net.GET_RANDOM_PEOPLE
                             )
                             return
                         }
@@ -75,11 +75,11 @@ class NetPerson() : NetHelper() {
 
                 }
 
-                mListener?.onResultError("Ws failed", ConstantsApp.NetPerson.GET_RANDOM_PEOPLE)
+                mListener?.onResultError("Ws failed", ConstantsApp.Net.GET_RANDOM_PEOPLE)
             }
 
             override fun onFailure(call: Call<RequestPerson>, t: Throwable) {
-                mListener?.onResultError("Ws failed", ConstantsApp.NetPerson.GET_RANDOM_PEOPLE)
+                mListener?.onResultError("Ws failed", ConstantsApp.Net.GET_RANDOM_PEOPLE)
             }
         })
 

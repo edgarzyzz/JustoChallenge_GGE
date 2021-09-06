@@ -16,6 +16,12 @@ class FriendAdapter() : RecyclerView.Adapter<FriendAdapter.FriendViewHolder>() {
         mListener = listener
     }
 
+    fun updateElements(listUpdated:MutableList<Friend>){
+        mListFriends.clear()
+        mListFriends.addAll(listUpdated)
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemFriendBinding.inflate(inflater, parent, false)

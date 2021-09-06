@@ -5,11 +5,13 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.gogaedd.edgargonzalezjustochallenge.infraestructure.ConstantsApp
 import com.gogaedd.edgargonzalezjustochallenge.listener.NetHelperListener
+import com.gogaedd.edgargonzalezjustochallenge.model.Friend
 import com.gogaedd.edgargonzalezjustochallenge.model.Person
 import com.gogaedd.edgargonzalezjustochallenge.persistence.db.AppDatabase
 import com.gogaedd.edgargonzalezjustochallenge.persistence.net.NetPerson
 import com.gogaedd.edgargonzalezjustochallenge.utils.showToast
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
 class MainRepository(val application: Application) : NetHelperListener {
@@ -30,30 +32,18 @@ class MainRepository(val application: Application) : NetHelperListener {
 
 
     private val lvdUsers = MutableLiveData<MutableList<Person>>(mutableListOf())
-    private val lvdFriends = MutableLiveData<MutableList<Person>>(mutableListOf())
+    private val lvdFriends = MutableLiveData<MutableList<Friend>>(mutableListOf())
     private val lvdRandomPeople = MutableLiveData<MutableList<Person>>(mutableListOf())
     private val lvdCurrentUser = MutableLiveData<Person>()
 
-
+    //getter lvd
     //DB
-    fun getLvdUsers(): MutableLiveData<MutableList<Person>> {
-        return lvdUsers
-    }
-
-    //DB
-    fun getLvdFriends(): MutableLiveData<MutableList<Person>> {
-        return lvdFriends
-    }
+    fun getLvdUsers(): MutableLiveData<MutableList<Person>> = lvdUsers
+    fun getLvdFriends(): MutableLiveData<MutableList<Friend>> = lvdFriends
 
     //WS
-    fun getLvdRandomPoeple(): MutableLiveData<MutableList<Person>> {
-        return lvdRandomPeople
-    }
-
-    //WS
-    fun getLvdCurrentUser(): MutableLiveData<Person> {
-        return lvdCurrentUser
-    }
+    fun getLvdRandomPoeple(): MutableLiveData<MutableList<Person>> = lvdRandomPeople
+    fun getLvdCurrentUser(): MutableLiveData<Person> = lvdCurrentUser
 
 
     //DB methods
@@ -63,6 +53,7 @@ class MainRepository(val application: Application) : NetHelperListener {
             lvdCurrentUser.postValue(userByEmail)
         }
     }
+
 
     fun getAllUsersRegistrered() {
         runBlocking(Dispatchers.IO) {
@@ -77,12 +68,12 @@ class MainRepository(val application: Application) : NetHelperListener {
             personDao.deleteUser(person)
         }
     }
-    fun storeNewUser(person: Person){
+
+    fun storeNewUser(person: Person) {
         runBlocking(Dispatchers.IO) {
             personDao.insert(person)
         }
     }
-
 
 
 //Ws methos
@@ -103,12 +94,17 @@ class MainRepository(val application: Application) : NetHelperListener {
 
     override fun onResultOk(any: Any, code: Int) {
         Log.d(TAG, "onResultOk: ")
-        if (code == ConstantsApp.NetPerson.GET_NEW_USER) {
+        if (code == ConstantsApp.Net.GET_NEW_USER) {
             if (any is Person) {
                 lvdCurrentUser.value = any
                 storeNewUser(any)
-            }else{
-                onResultError("error al parsear new user",code)
+            } else {
+                onResultError("error al parsear new user", code)
+            }
+        } else if (code == ConstantsApp.Net.GET_RANDOM_PEOPLE) {
+            if (any is MutableList<*>) {
+                lvdRandomPeople.postValue(any as MutableList<Person>)
+
             }
         } else if (any is List<*>) {
             val mutableList = any as MutableList<Person>
@@ -117,10 +113,50 @@ class MainRepository(val application: Application) : NetHelperListener {
     }
 
     override fun onResultError(meesageError: String, code: Int) {
-        if (code == ConstantsApp.NetPerson.GET_NEW_USER) {
+        if (code == ConstantsApp.Net.GET_NEW_USER) {
             application.showToast(meesageError)
         }
     }
 
+    fun createFriend(nearPerson: Person) {
+
+        lvdCurrentUser.value?.let {
+            runBlocking(Dispatchers.IO) {
+                val friend = Friend(nearPerson, it.email)
+                friendDao.insertFriend(friend)
+                delay(300)
+                loadFriendsCurrentUser()
+
+            }
+        }
+
+
+    }
+
+    fun loadFriendsCurrentUser() {
+        lvdCurrentUser.value?.let {
+            val email = it.email
+            runBlocking(Dispatchers.IO) {
+                val friends = friendDao.getFriendsByEmail(email)
+                lvdFriends.postValue(friends)
+            }
+        }
+
+
+    }
+
+    fun selectCurrentUser(user: Person) {
+        lvdCurrentUser.value = user
+    }
+
+    fun deleteFriend(friendToDelete: Friend) {
+        runBlocking (Dispatchers.IO){
+            friendDao.deleteFriend(friendToDelete)
+            loadFriendsCurrentUser()
+        }
+
+    }
+
 
 }
+

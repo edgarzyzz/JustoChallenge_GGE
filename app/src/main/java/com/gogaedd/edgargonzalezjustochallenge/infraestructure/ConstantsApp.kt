@@ -2,7 +2,7 @@ package com.gogaedd.edgargonzalezjustochallenge.infraestructure
 
 object ConstantsApp {
 
-    object NetPerson {
+    object Net {
 
         const val GET_NEW_USER = 101
         const val GET_RANDOM_PEOPLE = 102

@@ -43,7 +43,7 @@ class NearPersonAdapter(): RecyclerView.Adapter<NearPersonAdapter.NearPersonView
                 mlistener?.onAddNearperson(nearperson)
             }
             binding.root.setOnClickListener {
-                mlistener?.onShowDetailNearPerson(nearpersona)
+                mlistener?.onShowDetailNearPerson(nearperson)
             }
         }
 

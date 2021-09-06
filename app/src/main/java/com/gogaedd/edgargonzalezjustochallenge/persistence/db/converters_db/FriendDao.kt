@@ -15,8 +15,8 @@ interface FriendDao {
     @Query("select * from Friend")
     fun getAllFriends(): MutableList<Friend>
 
-    @Query("select * from Friend where email = :email")
-    fun getFriendByEmail(email: String):Friend
+    @Query("select * from Friend where emailMainUserFriend = :email")
+    fun getFriendsByEmail(email: String):MutableList<Friend>
 
     @Query("delete from friend where emailMainUserFriend = :emailUserDeleted")
     fun deleteAllFriendsByUser(emailUserDeleted: String)

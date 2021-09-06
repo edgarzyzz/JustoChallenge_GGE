@@ -39,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="350dp"
             data="@{viewmodel.lvdUsers}"
+            visibilityRecyclerByElements="@{viewmodel.lvdUsers}"
             app:layout_constraintTop_toBottomOf="@id/tvFieldStartFgmntl"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,6 +47,16 @@
             tools:listitem="@layout/item_user"
             />
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="¡No existen usuarios registados!"
+            app:layout_constraintStart_toStartOf="@id/rvUsersRegistreredtFgmntl"
+            visibilityMsgEmptyDataByElements="@{viewmodel.lvdUsers}"
+            app:layout_constraintEnd_toEndOf="@id/rvUsersRegistreredtFgmntl"
+            app:layout_constraintTop_toTopOf="@id/rvUsersRegistreredtFgmntl"
+            app:layout_constraintBottom_toBottomOf="@id/rvUsersRegistreredtFgmntl"/>
 
         <Button
             android:id="@+id/btnCreateUsertFgmntl"
@@ -53,6 +64,7 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:text="Create User"
+            setEnableByLimMaxElements="@{viewmodel.lvdUsers}"
             app:layout_constraintTop_toBottomOf="@id/rvUsersRegistreredtFgmntl"
             app:layout_constraintEnd_toEndOf="parent" />
 
